@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   Design tokens — "Adventurer's Ledger": a candlelit tavern
+   quest-board, not a SaaS dashboard. Three equippable palettes.
+   ----------------------------------------------------------------*/
+:root,
+[data-theme="tavern"] {
+  --ink: #2b2013;
+  --ink-soft: #4a3a24;
+  --parchment: #f1e6c9;
+  --parchment-card: #f8f0dc;
+  --parchment-edge: #d9c493;
+  --accent: #b8862f;
+  --accent-strong: #8f6420;
+  --accent-glow: #f4c95d;
+  --success: #3f5d3a;
+  --danger: #7a3226;
+  --bg-deep: #1c140b;
+}
+
+[data-theme="dungeon"] {
+  --ink: #e8ecdf;
+  --ink-soft: #b9c4ab;
+  --parchment: #10160f;
+  --parchment-card: #171f15;
+  --parchment-edge: #2a3626;
+  --accent: #5ea36a;
+  --accent-strong: #3f7a4d;
+  --accent-glow: #9be08a;
+  --success: #6fae63;
+  --danger: #b3503f;
+  --bg-deep: #060a06;
+}
+
+[data-theme="astral"] {
+  --ink: #e7e6f5;
+  --ink-soft: #b3aed6;
+  --parchment: #14122b;
+  --parchment-card: #1b1940;
+  --parchment-edge: #322d63;
+  --accent: #9c8bf0;
+  --accent-strong: #7566cc;
+  --accent-glow: #d9cfff;
+  --success: #6fb693;
+  --danger: #d97a8f;
+  --bg-deep: #09081a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-deep);
+  color: var(--ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+}
+
+/* Visible focus ring everywhere — keyboard nav must always be legible */
+:focus-visible {
+  outline: 2px solid var(--accent-glow);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.quest-card {
+  background: var(--parchment-card);
+  border: 1px solid var(--parchment-edge);
+  box-shadow: 0 2px 0 var(--parchment-edge), 0 8px 20px -12px rgba(0, 0, 0, 0.6);
+}
+
+.wax-pin {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.xp-bar-track {
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--parchment-edge);
+  border-radius: 8px;
+}
