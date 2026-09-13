@@ -14,7 +14,11 @@ if (!connectionString) {
 // Reuse the connection across hot-reloads in dev so we don't exhaust the pool.
 const client =
   global.__liferpg_pg_client ??
-  postgres(connectionString, { max: 10, prepare: false });
+  postgres(connectionString, {
+    max: 10,
+    prepare: false,
+    ssl: process.env.NODE_ENV === "production" ? "require" : false,
+  });
 
 if (process.env.NODE_ENV !== "production") {
   global.__liferpg_pg_client = client;
